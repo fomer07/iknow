@@ -2,6 +2,7 @@ package com.example.iknow_assignment.controller;
 
 
 import com.example.iknow_assignment.model.Category;
+import com.example.iknow_assignment.model.Product;
 import com.example.iknow_assignment.repository.CategoryRepository;
 import com.example.iknow_assignment.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,6 +48,43 @@ public class ProductControllerIntegrationTest {
                 .content(productJson))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Smartphone"));
+    }
+
+    @Test
+    public void testGetProductById() throws Exception {
+        Product product = new Product();
+        product.setName("Smartphone");
+        product.setCategory(category);
+        productRepository.save(product);
+        mockMvc.perform(get("/products/"+product.getId()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Smartphone"));
+    }
+
+    @Test
+    public void testUpdateProduct() throws Exception {
+        Product product = new Product();
+        product.setName("Smartphone");
+        product.setCategory(category);
+        productRepository.save(product);
+        String updatedProductJson = "{\"name\": \"Smartphone\",\"categoryName\":\"Electronics\"}";
+        mockMvc.perform(put("/products/"+product.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(updatedProductJson))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Updated Smartphone"));
+    }
+
+    @Test
+    public void testDeleteProduct() throws Exception {
+        Product product = new Product();
+        product.setName("Smartphone");
+        product.setCategory(category);
+        product = productRepository.save(product);
+        mockMvc.perform(delete("/products/"+product.getId()))
+                .andExpect(status().isOk());
+        mockMvc.perform(get("/products/"+product.getId()))
+                .andExpect(status().isNotFound());
     }
 
 
