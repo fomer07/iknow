@@ -72,4 +72,5 @@ public class CategoryServiceTest {
         categoryService.deleteCategory(1L);
         verify(categoryRepository,times(1)).deleteById(1L);
     }
+
 }
