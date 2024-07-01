@@ -31,14 +31,14 @@ public class ProductController {
 
     @PostMapping
     @Operation(summary = "Create a new product")
-    public Product createProduct(@RequestBody Product product) {
-        return productService.saveProduct(product);
+    public Product createProduct(@RequestBody ProductRequest productRequest) {
+        return productService.saveProduct(productRequest.toProduct(),productRequest.getCategoryName());
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update a product")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
-        return productService.updateProduct(id, productDetails);
+    public Product updateProduct(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
+        return productService.updateProduct(id, productRequest.toProduct(),productRequest.getCategoryName());
     }
 
     @DeleteMapping("/{id}")
