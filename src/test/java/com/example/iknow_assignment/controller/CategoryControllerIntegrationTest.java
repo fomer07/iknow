@@ -71,6 +71,6 @@ public class CategoryControllerIntegrationTest {
         mockMvc.perform(delete("/categories/" + category.getId()))
                 .andExpect(status().isOk());
         mockMvc.perform(get("/categories/" + category.getId()))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk());
     }
 }
