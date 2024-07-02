@@ -49,4 +49,10 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    public String deleteAllCategories(){
+        logger.debug("Deleting all products");
+        categoryRepository.deleteAll();
+        return "All categories deleted successfully";
+    }
+
 }

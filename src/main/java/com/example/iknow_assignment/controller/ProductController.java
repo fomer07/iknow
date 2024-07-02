@@ -48,4 +48,10 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
+    @DeleteMapping("/deleteAll")
+    @Operation(summary = "Delete all products")
+    public String deleteAllProducts(){
+        return productService.deleteAllProducts();
+    }
+
 }

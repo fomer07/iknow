@@ -64,4 +64,10 @@ public class ProductService {
         logger.debug("Deleting product with id : " + id);
         productRepository.deleteById(id);
     }
+
+    public String deleteAllProducts() {
+        logger.debug("Deleting all products");
+        productRepository.deleteAll();
+        return "All products deleted successfully";
+    }
 }

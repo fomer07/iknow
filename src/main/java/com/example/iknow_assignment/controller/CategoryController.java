@@ -47,4 +47,10 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
+    @DeleteMapping("/deleteAll")
+    @Operation(summary = "Delete all categories")
+    public String deleteAllCategories(){
+        return categoryService.deleteAllCategories();
+    }
+
 }
