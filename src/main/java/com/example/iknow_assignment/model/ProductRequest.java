@@ -1,7 +1,6 @@
-package com.example.iknow_assignment.controller;
+package com.example.iknow_assignment.model;
 
 
-import com.example.iknow_assignment.model.Product;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ProductRequest {

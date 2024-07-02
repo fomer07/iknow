@@ -1,6 +1,7 @@
 package com.example.iknow_assignment.controller;
 
 import com.example.iknow_assignment.model.Product;
+import com.example.iknow_assignment.model.ProductRequest;
 import com.example.iknow_assignment.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
