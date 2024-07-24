@@ -19,7 +19,7 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public List<Category> getAllCategories(){
-        logger.debug("Fetching all products");
+        logger.debug("Fetching all categories");
         return categoryRepository.findAll();
     }
 
